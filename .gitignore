@@ -1,3 +1,7 @@
+# Qt related excludes
+CMakeLists.txt.user
+build*/
+
 # Prerequisites
 *.d
 
