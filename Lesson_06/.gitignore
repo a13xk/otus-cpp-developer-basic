@@ -4,6 +4,7 @@ build*/
 
 #CLion related excludes
 .idea/
+cmake*/
 
 # Prerequisites
 *.d
