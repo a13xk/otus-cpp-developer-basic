@@ -1,21 +1,21 @@
 #include <iostream>
 #include <ctime>
 
-void printHeader() 
+void print_header()
 {
     std::cout << "╔═══════════════════════╗" << std::endl;
     std::cout << "║ Guess The Number Game ║" << std::endl;
     std::cout << "╚═══════════════════════╝" << std::endl;
 }
 
-int randomValue()
+int random_value()
 {
     const int max_value = 100;
     std::srand(std::time(nullptr)); // use current time as seed for random generator
     return std::rand() % max_value;
 }
 
-std::string askForName()
+std::string ask_for_name()
 {
     std::cout << "Hi! Enter your name, please:" << std::endl;
     std::string user_name;
@@ -26,12 +26,12 @@ std::string askForName()
 
 int main()
 {
-    const int target_value = randomValue();
+    const int target_value = random_value();
     int current_value = 0;
     unsigned int attempts = 0;
 
-    printHeader();
-    std::string user_name = askForName();
+    print_header();
+    std::string user_name = ask_for_name();
 
     std::cout << "Enter your guess:" << std::endl;
     do {
