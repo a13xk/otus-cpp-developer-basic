@@ -2,6 +2,9 @@
 CMakeLists.txt.user
 build*/
 
+#CLion related excludes
+.idea/
+
 # Prerequisites
 *.d
 
