@@ -86,6 +86,7 @@ int print_high_scores(const string& high_scores_filename)
  */
 int main(int argc, char** argv)
 {
+    const string high_scores_filename = "high_scores.txt";
     int max_value = 0;
     if (argc >= 2) {
         string key{argv[1]};
@@ -97,8 +98,13 @@ int main(int argc, char** argv)
                 return -1;
             }
             max_value = stoi(argv[2]);
+        } else if(key == "-table") {
+            print_high_scores(high_scores_filename);
+            return -1;
         } else {
-            cout << "Only '-max VALUE' optional argument is supported" << endl;
+            cout << "The following optional arguments are supportted:" << endl;
+            cout << "'-max VALUE' - upper limit for random number generation" << endl;
+            cout << "'-table'     - print High Scores table and exit" << endl;
             return -1;
         }
     }
@@ -107,7 +113,6 @@ int main(int argc, char** argv)
     const int target_value = random_value(max_value);
     int current_value = 0;
     unsigned int attempts = 0;
-    const string high_scores_filename = "high_scores.txt";
 
     print_header();
     string user_name = ask_for_name();
