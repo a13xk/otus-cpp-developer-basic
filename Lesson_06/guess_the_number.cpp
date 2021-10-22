@@ -13,11 +13,12 @@ void print_header()
     cout << "╚═══════════════════════╝" << endl;
 }
 /**
- * Return random value between 0 and 100
+ * Return random value between 0 and max_value
+ * @param max_value Upper limit for random number generation
+ * @return
  */
-int random_value()
+int random_value(const int max_value)
 {
-    const int max_value = 100;
     srand(time(nullptr)); // use current time as seed for random generator
     return rand() % max_value;
 }
@@ -83,9 +84,27 @@ int print_high_scores(const string& high_scores_filename)
 /**
  * Entry point
  */
-int main()
+int main(int argc, char** argv)
 {
-    const int target_value = random_value();
+    int max_value = 0;
+    if (argc >= 2) {
+        string key{argv[1]};
+        if (key == "-max")
+        {
+            if (argc != 3)
+            {
+                cout << "Wrong usage! The '-max VALUE' parameter requires some value" << endl;
+                return -1;
+            }
+            max_value = stoi(argv[2]);
+        } else {
+            cout << "Only '-max VALUE' optional argument is supported" << endl;
+            return -1;
+        }
+    }
+    if (max_value < 2 || max_value > 100)
+        max_value = 100;
+    const int target_value = random_value(max_value);
     int current_value = 0;
     unsigned int attempts = 0;
     const string high_scores_filename = "high_scores.txt";
