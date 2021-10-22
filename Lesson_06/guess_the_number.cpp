@@ -1,5 +1,6 @@
 #include <iostream>
 #include <ctime>
+#include <fstream>
 
 using namespace std;
 
@@ -23,6 +24,19 @@ string ask_for_name()
     string user_name;
     cin >> user_name;
     return user_name;
+}
+
+int write_high_scores(const string& user_name, unsigned int attempts_taken)
+{
+    const string high_scores_filename = "high_scores.txt";
+    ofstream out_file{high_scores_filename, ios_base::app};
+    if (!out_file.is_open()) {
+        cout << "Failed to open file for writing: " << high_scores_filename << "!" << endl;
+        return -1;
+    }
+    out_file << user_name << ' ' << attempts_taken << endl;
+    out_file.close();
+    return 0;
 }
 
 int main()
@@ -50,5 +64,7 @@ int main()
         }
     } while(true);
     cout << "Attempts taken: " << attempts << endl;
+    if (write_high_scores(user_name, attempts) != 0)
+        return -1;
     return 0;
 }
