@@ -38,6 +38,33 @@ int write_high_scores(const string& high_scores_filename, const string& user_nam
     return 0;
 }
 
+int print_high_scores(const string& high_scores_filename)
+{
+    ifstream in_file{high_scores_filename};
+    if (!in_file.is_open()) {
+        std::cout << "Failed to open file for reading: " << high_scores_filename << "!" << endl;
+        return -1;
+    }
+    cout << "\n";
+    cout << "╔═════════════╗" << endl;
+    cout << "║ High Scores ║" << endl;
+    cout << "╚═════════════╝" << endl;
+
+    string username;
+    unsigned int high_score=0;
+
+    while (true)
+    {
+        in_file >> username;
+        in_file >> high_score;
+        in_file.ignore();
+        if (in_file.fail()) break;
+        cout << username << "\t" << high_score << endl;
+    }
+    in_file.close();
+    return 0;
+}
+
 int main()
 {
     const int target_value = random_value();
@@ -65,6 +92,8 @@ int main()
     } while(true);
     cout << "Attempts taken: " << attempts << endl;
     if (write_high_scores(high_scores_filename, user_name, attempts) != 0)
+        return -1;
+    if (print_high_scores(high_scores_filename) != 0)
         return -1;
     return 0;
 }
