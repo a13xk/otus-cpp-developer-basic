@@ -28,6 +28,7 @@ int main()
 {
     const int target_value = randomValue();
     int current_value = 0;
+    unsigned int attempts = 0;
 
     printHeader();
     std::string user_name = askForName();
@@ -35,7 +36,7 @@ int main()
     std::cout << "Enter your guess:" << std::endl;
     do {
         std::cin >> current_value;
-
+        attempts++;
         if (current_value < target_value) {
             std::cout << "You entered " << current_value << ". It is less than guessed number, please try again" << std::endl;
         }
@@ -46,8 +47,7 @@ int main()
             std::cout << "Congratulation! You guessed correct number!" << std::endl;
             break;
         }
-
     } while(true);
-
+    std::cout << "Attempts taken: " << attempts << std::endl;
     return 0;
 }
