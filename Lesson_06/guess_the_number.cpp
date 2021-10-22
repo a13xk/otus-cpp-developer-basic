@@ -6,7 +6,6 @@ void printHeader()
     std::cout << "╔═══════════════════════╗" << std::endl;
     std::cout << "║ Guess The Number Game ║" << std::endl;
     std::cout << "╚═══════════════════════╝" << std::endl;
-    std::cout << "Enter your guess:" << std::endl;
 }
 
 int randomValue()
@@ -16,15 +15,24 @@ int randomValue()
     return std::rand() % max_value;
 }
 
+std::string askForName()
+{
+    std::cout << "Hi! Enter your name, please:" << std::endl;
+    std::string user_name;
+    std::cin >> user_name;
+    return user_name;
+}
+
 
 int main()
 {
     const int target_value = randomValue();
     int current_value = 0;
-    bool not_win = true;
 
     printHeader();
+    std::string user_name = askForName();
 
+    std::cout << "Enter your guess:" << std::endl;
     do {
         std::cin >> current_value;
 
