@@ -26,9 +26,8 @@ string ask_for_name()
     return user_name;
 }
 
-int write_high_scores(const string& user_name, unsigned int attempts_taken)
+int write_high_scores(const string& high_scores_filename, const string& user_name, unsigned int attempts_taken)
 {
-    const string high_scores_filename = "high_scores.txt";
     ofstream out_file{high_scores_filename, ios_base::app};
     if (!out_file.is_open()) {
         cout << "Failed to open file for writing: " << high_scores_filename << "!" << endl;
@@ -44,6 +43,7 @@ int main()
     const int target_value = random_value();
     int current_value = 0;
     unsigned int attempts = 0;
+    const string high_scores_filename = "high_scores.txt";
 
     print_header();
     string user_name = ask_for_name();
@@ -64,7 +64,7 @@ int main()
         }
     } while(true);
     cout << "Attempts taken: " << attempts << endl;
-    if (write_high_scores(user_name, attempts) != 0)
+    if (write_high_scores(high_scores_filename, user_name, attempts) != 0)
         return -1;
     return 0;
 }
