@@ -3,21 +3,27 @@
 #include <fstream>
 
 using namespace std;
-
+/**
+ * Print game header
+ */
 void print_header()
 {
     cout << "╔═══════════════════════╗" << endl;
     cout << "║ Guess The Number Game ║" << endl;
     cout << "╚═══════════════════════╝" << endl;
 }
-
+/**
+ * Return random value between 0 and 100
+ */
 int random_value()
 {
     const int max_value = 100;
     srand(time(nullptr)); // use current time as seed for random generator
     return rand() % max_value;
 }
-
+/**
+ * Ask player to enter his/her name
+ */
 string ask_for_name()
 {
     cout << "Hi! Enter your name, please:" << endl;
@@ -25,7 +31,13 @@ string ask_for_name()
     cin >> user_name;
     return user_name;
 }
-
+/**
+ * Write user name and attempts count to high scores file
+ * @param high_scores_filename Path to High Scores table file
+ * @param user_name User name
+ * @param attempts_taken Number of attempts taken to guess the number
+ * @return
+ */
 int write_high_scores(const string& high_scores_filename, const string& user_name, unsigned int attempts_taken)
 {
     ofstream out_file{high_scores_filename, ios_base::app};
@@ -37,7 +49,11 @@ int write_high_scores(const string& high_scores_filename, const string& user_nam
     out_file.close();
     return 0;
 }
-
+/**
+ * Print High Scores table read from file
+ * @param high_scores_filename Path to High Scores table file
+ * @return
+ */
 int print_high_scores(const string& high_scores_filename)
 {
     ifstream in_file{high_scores_filename};
@@ -64,7 +80,9 @@ int print_high_scores(const string& high_scores_filename)
     in_file.close();
     return 0;
 }
-
+/**
+ * Entry point
+ */
 int main()
 {
     const int target_value = random_value();
