@@ -1,5 +1,13 @@
 #include <iostream>
 
+void printHeader() 
+{
+    std::cout << "╔═══════════════════════╗" << std::endl;
+    std::cout << "║ Guess The Number Game ║" << std::endl;
+    std::cout << "╚═══════════════════════╝" << std::endl;
+    std::cout << "Enter your guess:" << std::endl;
+}
+
 
 int main()
 {
@@ -7,10 +15,7 @@ int main()
     int current_value = 0;
     bool not_win = true;
 
-    std::cout << "╔═══════════════════════╗" << std::endl;
-    std::cout << "║ Guess The Number Game ║" << std::endl;
-    std::cout << "╚═══════════════════════╝" << std::endl;
-    std::cout << "Enter your guess:" << std::endl;
+    printHeader();
 
     do {
         std::cin >> current_value;
