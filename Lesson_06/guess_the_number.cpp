@@ -1,4 +1,5 @@
 #include <iostream>
+#include <ctime>
 
 void printHeader() 
 {
@@ -8,10 +9,17 @@ void printHeader()
     std::cout << "Enter your guess:" << std::endl;
 }
 
+int randomValue()
+{
+    const int max_value = 100;
+    std::srand(std::time(nullptr)); // use current time as seed for random generator
+    return std::rand() % max_value;
+}
+
 
 int main()
 {
-    const int target_value = 54;
+    const int target_value = randomValue();
     int current_value = 0;
     bool not_win = true;
 
