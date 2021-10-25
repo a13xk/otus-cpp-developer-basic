@@ -108,7 +108,7 @@ int main(int argc, char** argv)
             return -1;
         }
     }
-    if (max_value < 2 || max_value > 100)
+    if (max_value < 0 || max_value > 100)
         max_value = 100;
     const int target_value = random_value(max_value);
     int current_value = 0;
