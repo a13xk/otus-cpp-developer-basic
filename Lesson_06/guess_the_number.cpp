@@ -90,21 +90,42 @@ int main(int argc, char** argv)
     int max_value = 0;
     if (argc >= 2) {
         string key{argv[1]};
-        if (key == "-max")
-        {
+        if (key == "-max") {
             if (argc != 3)
             {
                 cout << "Wrong usage! The '-max VALUE' parameter requires some value" << endl;
                 return -1;
             }
             max_value = stoi(argv[2]);
+        } else if (key == "-level"){
+            if (argc != 3)
+            {
+                cout << "Wrong usage! The '-level VALUE' parameter requires some value" << endl;
+                return -1;
+            }
+            int level_value = stoi(argv[2]);
+            if (level_value == 1) {
+                max_value = 10;
+            } else if (level_value == 2) {
+                max_value = 50;
+            } else if (level_value == 3) {
+                max_value = 100;
+            } else {
+                cout << "Wrong usage! The '-level VALUE' parameter supports 3 possible values:" << endl;
+                cout << "-level 1 - random number is generated in range between 0 and 10" << endl;
+                cout << "-level 2 - random number is generated in range between 0 and 50" << endl;
+                cout << "-level 3 - random number is generated in range between 0 and 100" << endl;
+                return -1;
+            }
+
         } else if(key == "-table") {
             print_high_scores(high_scores_filename);
             return -1;
         } else {
             cout << "The following optional arguments are supportted:" << endl;
-            cout << "'-max VALUE' - upper limit for random number generation" << endl;
-            cout << "'-table'     - print High Scores table and exit" << endl;
+            cout << "'-max VALUE'   - upper limit for random number generation" << endl;
+            cout << "'-level VALUE' - 3 possible upper limits for random number generation (1 - 10, 2 - 50, 3 - 100)" << endl;
+            cout << "'-table'       - print High Scores table and exit" << endl;
             return -1;
         }
     }
