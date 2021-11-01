@@ -95,14 +95,14 @@ int main(int argc, char** argv)
                 std::cout << "Wrong usage! The '-max VALUE' parameter requires some value" << std::endl;
                 return -1;
             }
-            max_value = stoi(argv[2]);
+            max_value = std::atoi(argv[2]);
         } else if (key == "-level"){
             if (argc != 3)
             {
                 std::cout << "Wrong usage! The '-level VALUE' parameter requires some value" << std::endl;
                 return -1;
             }
-            int level_value = stoi(argv[2]);
+            int level_value = std::atoi(argv[2]);
             if (level_value == 1) {
                 max_value = 10;
             } else if (level_value == 2) {
