@@ -10,6 +10,15 @@ void print_header()
     std::cout << "╚═══════════════════════╝" << std::endl;
 }
 /**
+ * Print usage for `-level VALUE` parameter
+ */
+void print_level_usage() {
+    std::cout << "Wrong usage! The '-level VALUE' parameter supports 3 possible values:" << std::endl;
+    std::cout << "-level 1 - random number is generated in range between 0 and 10" << std::endl;
+    std::cout << "-level 2 - random number is generated in range between 0 and 50" << std::endl;
+    std::cout << "-level 3 - random number is generated in range between 0 and 100" << std::endl;
+}
+/**
  * Return random value between 0 and max_value
  * @param max_value Upper limit for random number generation
  * @return

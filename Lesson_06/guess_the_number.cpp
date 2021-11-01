@@ -30,13 +30,9 @@ int main(int argc, char** argv)
             } else if (level_value == 3) {
                 max_value = 100;
             } else {
-                std::cout << "Wrong usage! The '-level VALUE' parameter supports 3 possible values:" << std::endl;
-                std::cout << "-level 1 - random number is generated in range between 0 and 10" << std::endl;
-                std::cout << "-level 2 - random number is generated in range between 0 and 50" << std::endl;
-                std::cout << "-level 3 - random number is generated in range between 0 and 100" << std::endl;
+                print_level_usage();
                 return -1;
             }
-
         } else if(key == "-table") {
             print_high_scores(high_scores_filename);
             return -1;
