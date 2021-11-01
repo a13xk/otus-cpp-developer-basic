@@ -41,7 +41,7 @@ int main(int argc, char** argv)
             print_high_scores(high_scores_filename);
             return -1;
         } else {
-            std::cout << "The following optional arguments are supportted:" << std::endl;
+            std::cout << "The following optional arguments are supported:" << std::endl;
             std::cout << "'-max VALUE'   - upper limit for random number generation" << std::endl;
             std::cout << "'-level VALUE' - 3 possible upper limits for random number generation (1 - 10, 2 - 50, 3 - 100)" << std::endl;
             std::cout << "'-table'       - print High Scores table and exit" << std::endl;
