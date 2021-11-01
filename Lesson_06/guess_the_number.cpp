@@ -2,15 +2,14 @@
 #include <ctime>
 #include <fstream>
 
-using namespace std;
 /**
  * Print game header
  */
 void print_header()
 {
-    cout << "╔═══════════════════════╗" << endl;
-    cout << "║ Guess The Number Game ║" << endl;
-    cout << "╚═══════════════════════╝" << endl;
+    std::cout << "╔═══════════════════════╗" << std::endl;
+    std::cout << "║ Guess The Number Game ║" << std::endl;
+    std::cout << "╚═══════════════════════╝" << std::endl;
 }
 /**
  * Return random value between 0 and max_value
@@ -25,11 +24,11 @@ int random_value(const int max_value)
 /**
  * Ask player to enter his/her name
  */
-string ask_for_name()
+std::string ask_for_name()
 {
-    cout << "Hi! Enter your name, please:" << endl;
-    string user_name;
-    cin >> user_name;
+    std::cout << "Hi! Enter your name, please:" << std::endl;
+    std::string user_name;
+    std::cin >> user_name;
     return user_name;
 }
 /**
@@ -39,14 +38,14 @@ string ask_for_name()
  * @param attempts_taken Number of attempts taken to guess the number
  * @return
  */
-int write_high_scores(const string& high_scores_filename, const string& user_name, unsigned int attempts_taken)
+int write_high_scores(const std::string& high_scores_filename, const std::string& user_name, unsigned int attempts_taken)
 {
-    ofstream out_file{high_scores_filename, ios_base::app};
+    std::ofstream out_file{high_scores_filename, std::ios_base::app};
     if (!out_file.is_open()) {
-        cout << "Failed to open file for writing: " << high_scores_filename << "!" << endl;
+        std::cout << "Failed to open file for writing: " << high_scores_filename << "!" << std::endl;
         return -1;
     }
-    out_file << user_name << ' ' << attempts_taken << endl;
+    out_file << user_name << ' ' << attempts_taken << std::endl;
     out_file.close();
     return 0;
 }
@@ -55,19 +54,19 @@ int write_high_scores(const string& high_scores_filename, const string& user_nam
  * @param high_scores_filename Path to High Scores table file
  * @return
  */
-int print_high_scores(const string& high_scores_filename)
+int print_high_scores(const std::string& high_scores_filename)
 {
-    ifstream in_file{high_scores_filename};
+    std::ifstream in_file{high_scores_filename};
     if (!in_file.is_open()) {
-        std::cout << "Failed to open file for reading: " << high_scores_filename << "!" << endl;
+        std::cout << "Failed to open file for reading: " << high_scores_filename << "!" << std::endl;
         return -1;
     }
-    cout << "\n";
-    cout << "╔═════════════╗" << endl;
-    cout << "║ High Scores ║" << endl;
-    cout << "╚═════════════╝" << endl;
+    std::cout << "\n";
+    std::cout << "╔═════════════╗" << std::endl;
+    std::cout << "║ High Scores ║" << std::endl;
+    std::cout << "╚═════════════╝" << std::endl;
 
-    string username;
+    std::string username;
     unsigned int high_score=0;
 
     while (true)
@@ -76,7 +75,7 @@ int print_high_scores(const string& high_scores_filename)
         in_file >> high_score;
         in_file.ignore();
         if (in_file.fail()) break;
-        cout << username << "\t" << high_score << endl;
+        std::cout << username << "\t" << high_score << std::endl;
     }
     in_file.close();
     return 0;
@@ -86,21 +85,21 @@ int print_high_scores(const string& high_scores_filename)
  */
 int main(int argc, char** argv)
 {
-    const string high_scores_filename = "high_scores.txt";
+    const std::string high_scores_filename = "high_scores.txt";
     int max_value = 0;
     if (argc >= 2) {
-        string key{argv[1]};
+        std::string key{argv[1]};
         if (key == "-max") {
             if (argc != 3)
             {
-                cout << "Wrong usage! The '-max VALUE' parameter requires some value" << endl;
+                std::cout << "Wrong usage! The '-max VALUE' parameter requires some value" << std::endl;
                 return -1;
             }
             max_value = stoi(argv[2]);
         } else if (key == "-level"){
             if (argc != 3)
             {
-                cout << "Wrong usage! The '-level VALUE' parameter requires some value" << endl;
+                std::cout << "Wrong usage! The '-level VALUE' parameter requires some value" << std::endl;
                 return -1;
             }
             int level_value = stoi(argv[2]);
@@ -111,10 +110,10 @@ int main(int argc, char** argv)
             } else if (level_value == 3) {
                 max_value = 100;
             } else {
-                cout << "Wrong usage! The '-level VALUE' parameter supports 3 possible values:" << endl;
-                cout << "-level 1 - random number is generated in range between 0 and 10" << endl;
-                cout << "-level 2 - random number is generated in range between 0 and 50" << endl;
-                cout << "-level 3 - random number is generated in range between 0 and 100" << endl;
+                std::cout << "Wrong usage! The '-level VALUE' parameter supports 3 possible values:" << std::endl;
+                std::cout << "-level 1 - random number is generated in range between 0 and 10" << std::endl;
+                std::cout << "-level 2 - random number is generated in range between 0 and 50" << std::endl;
+                std::cout << "-level 3 - random number is generated in range between 0 and 100" << std::endl;
                 return -1;
             }
 
@@ -122,10 +121,10 @@ int main(int argc, char** argv)
             print_high_scores(high_scores_filename);
             return -1;
         } else {
-            cout << "The following optional arguments are supportted:" << endl;
-            cout << "'-max VALUE'   - upper limit for random number generation" << endl;
-            cout << "'-level VALUE' - 3 possible upper limits for random number generation (1 - 10, 2 - 50, 3 - 100)" << endl;
-            cout << "'-table'       - print High Scores table and exit" << endl;
+            std::cout << "The following optional arguments are supportted:" << std::endl;
+            std::cout << "'-max VALUE'   - upper limit for random number generation" << std::endl;
+            std::cout << "'-level VALUE' - 3 possible upper limits for random number generation (1 - 10, 2 - 50, 3 - 100)" << std::endl;
+            std::cout << "'-table'       - print High Scores table and exit" << std::endl;
             return -1;
         }
     }
@@ -136,24 +135,24 @@ int main(int argc, char** argv)
     unsigned int attempts = 0;
 
     print_header();
-    string user_name = ask_for_name();
+    std::string user_name = ask_for_name();
 
-    cout << "Enter your guess:" << endl;
+    std::cout << "Enter your guess:" << std::endl;
     do {
-        cin >> current_value;
+        std::cin >> current_value;
         attempts++;
         if (current_value < target_value) {
-            cout << "You entered " << current_value << ". It is less than guessed number, please try again" << endl;
+            std::cout << "You entered " << current_value << ". It is less than guessed number, please try again" << std::endl;
         }
         else if (current_value > target_value) {
-            cout << "You entered " << current_value << ". It is greater than guessed number, please try again" << endl;
+            std::cout << "You entered " << current_value << ". It is greater than guessed number, please try again" << std::endl;
         }
         else {
-            cout << "Congratulation! You guessed correct number!" << endl;
+            std::cout << "Congratulation! You guessed correct number!" << std::endl;
             break;
         }
     } while(true);
-    cout << "Attempts taken: " << attempts << endl;
+    std::cout << "Attempts taken: " << attempts << std::endl;
     if (write_high_scores(high_scores_filename, user_name, attempts) != 0)
         return -1;
     if (print_high_scores(high_scores_filename) != 0)
