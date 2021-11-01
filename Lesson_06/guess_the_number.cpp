@@ -43,6 +43,8 @@ int main(int argc, char** argv)
             std::cout << "'-table'       - print High Scores table and exit" << std::endl;
             return -1;
         }
+    } else {
+        max_value = 100;
     }
     if (max_value < 0 || max_value > 100)
         max_value = 100;
