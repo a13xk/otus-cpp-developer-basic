@@ -5,5 +5,7 @@ project(Statistics)
 add_executable(statistics
         src/main.cpp
         src/IStatistics.h
+        src/CMax.h
+        src/CMax.cpp
         src/CMin.h
         src/CMin.cpp)
