@@ -1,10 +1,12 @@
 #include "CMin.h"
+#include "CMax.h"
 
 int main() {
-    const size_t statistics_count = 1;
+    const size_t statistics_count = 2;
     IStatistics *statistics[statistics_count];
 
     statistics[0] = new CMin{};
+    statistics[1] = new CMax{};
 
     double val = 0;
     while (std::cin >> val) {
