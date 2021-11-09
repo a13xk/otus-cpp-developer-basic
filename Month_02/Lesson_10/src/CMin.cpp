@@ -1,10 +1,10 @@
 #include "CMin.h"
 
 /**
- * Constructor initializes m_min with minimum finite value of type double
+ * Constructor initializes m_min with maximum finite value of type double
  * The CMin class encapsulates calculation of minimum value from given sequence
  */
-CMin::CMin() : m_min{std::numeric_limits<double>::min()} {}
+CMin::CMin() : m_min{std::numeric_limits<double>::max()} {}
 /**
  * Trivial destructor
  */
