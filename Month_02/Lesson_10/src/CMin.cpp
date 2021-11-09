@@ -11,7 +11,6 @@ CMin::CMin() : m_min{std::numeric_limits<double>::max()} {}
 CMin::~CMin() = default;
 /**
  * Update m_min value by next appropriate number from input sequence
- * @param next
  */
 void CMin::update(double next) {
     if (next < m_min) {
@@ -26,7 +25,6 @@ double CMin::eval() const {
 }
 /**
  * Return name of statistical operation
- * @return
  */
 const char *CMin::name() const {
     return "min";

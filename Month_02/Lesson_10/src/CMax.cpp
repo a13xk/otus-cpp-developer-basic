@@ -2,7 +2,7 @@
 
 /**
  * Constructor initializes m_max with minimum finite value of type double
- * The CMamx class encapsulates calculation of maximum value from given sequence
+ * The CMax class encapsulates calculation of maximum value from given sequence
  */
 CMax::CMax() : m_max{std::numeric_limits<double>::min()} {}
 /**
@@ -11,7 +11,6 @@ CMax::CMax() : m_max{std::numeric_limits<double>::min()} {}
 CMax::~CMax() = default;
 /**
  * Update m_max value by next appropriate number from input sequence
- * @param next
  */
 void CMax::update(double next) {
     if (next > m_max) {
@@ -26,7 +25,6 @@ double CMax::eval() const {
 }
 /**
  * Return name of statistical operation
- * @return
  */
 const char *CMax::name() const {
     return "max";
