@@ -11,5 +11,7 @@ add_executable(statistics
         src/CMean.cpp
         src/CMin.h
         src/CMin.cpp
+        src/CPct90.h
+        src/CPct90.cpp
         src/CStdDev.h
         src/CStdDev.cpp)
