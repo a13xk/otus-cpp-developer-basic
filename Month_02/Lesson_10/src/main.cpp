@@ -3,6 +3,7 @@
 #include "CMean.h"
 #include "CStdDev.h"
 #include "CPct90.h"
+#include "CPct95.h"
 
 int main() {
     // Statistical functions
@@ -12,6 +13,7 @@ int main() {
     statistics.push_back(new CMean{});
     statistics.push_back(new CStdDev{});
     statistics.push_back(new CPct90{});
+    statistics.push_back(new CPct95{});
 
     double val = 0;
     while (std::cin >> val) {
