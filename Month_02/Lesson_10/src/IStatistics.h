@@ -1,5 +1,8 @@
 #pragma once
 
+#include <iostream>
+#include <limits>
+
 class IStatistics {
 public:
     virtual ~IStatistics() = default;

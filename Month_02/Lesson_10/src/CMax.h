@@ -1,7 +1,5 @@
 #pragma once
 
-#include <iostream>
-#include <limits>
 #include "IStatistics.h"
 
 class CMax : public IStatistics {
