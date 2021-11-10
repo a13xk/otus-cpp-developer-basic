@@ -4,13 +4,12 @@
 #include "CStdDev.h"
 
 int main() {
-    const size_t statistics_count = 4;
-    IStatistics *statistics[statistics_count];
-
-    statistics[0] = new CMin{};
-    statistics[1] = new CMax{};
-    statistics[2] = new CMean{};
-    statistics[3] = new CStdDev{};
+    // Statistical functions
+    std::vector<IStatistics*> statistics;
+    statistics.push_back(new CMin{});
+    statistics.push_back(new CMax{});
+    statistics.push_back(new CMean{});
+    statistics.push_back(new CStdDev{});
 
     double val = 0;
     while (std::cin >> val) {
