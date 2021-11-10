@@ -10,4 +10,6 @@ add_executable(statistics
         src/CMean.h
         src/CMean.cpp
         src/CMin.h
-        src/CMin.cpp)
+        src/CMin.cpp
+        src/CStdDev.h
+        src/CStdDev.cpp)
