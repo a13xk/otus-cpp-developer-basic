@@ -14,8 +14,8 @@ int main() {
 
     double val = 0;
     while (std::cin >> val) {
-        for (size_t i = 0; i < statistics_count; ++i) {
-            statistics[i]->update(val);
+        for (auto &statistic : statistics) {
+            statistic->update(val);
         }
     }
 
@@ -26,13 +26,13 @@ int main() {
     }
 
     // Print results if any
-    for (size_t i = 0; i < statistics_count; ++i) {
-        std::cout << statistics[i]->name() << " = " << statistics[i]->eval() << std::endl;
+    for (auto &statistic : statistics) {
+        std::cout << statistic->name() << " = " << statistic->eval() << std::endl;
     }
 
     // Clear memory - delete all objects created by new
-    for (size_t i = 0; i < statistics_count; ++i) {
-        delete statistics[i];
+    for (auto &statistic : statistics) {
+        delete statistic;
     }
 
     return 0;
