@@ -1,14 +1,16 @@
 #include "CMin.h"
 #include "CMax.h"
 #include "CMean.h"
+#include "CStdDev.h"
 
 int main() {
-    const size_t statistics_count = 3;
+    const size_t statistics_count = 4;
     IStatistics *statistics[statistics_count];
 
     statistics[0] = new CMin{};
     statistics[1] = new CMax{};
     statistics[2] = new CMean{};
+    statistics[3] = new CStdDev{};
 
     double val = 0;
     while (std::cin >> val) {
