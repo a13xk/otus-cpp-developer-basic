@@ -13,5 +13,7 @@ add_executable(statistics
         src/CMin.cpp
         src/CPct90.h
         src/CPct90.cpp
+        src/CPct95.h
+        src/CPct95.cpp
         src/CStdDev.h
         src/CStdDev.cpp)
