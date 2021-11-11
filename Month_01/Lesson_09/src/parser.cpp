@@ -13,8 +13,12 @@ Parser::Parser(Lexer &lexer) : lexer_(lexer) {}
 Parser::~Parser() = default;
 
 ASTNode *Parser::parse() { return expr(); }
-
-void Parser::next_token() { tok_ = lexer_.next_token(); }
+/**
+ * Get next token from lexer
+ */
+void Parser::next_token() {
+    tok_ = lexer_.next_token();
+}
 /**
  * Parse addition and subtraction
  */
