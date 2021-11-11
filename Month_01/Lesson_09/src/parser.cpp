@@ -11,8 +11,12 @@ Parser::Parser(Lexer &lexer) : lexer_(lexer) {}
  * Trivial destructor
  */
 Parser::~Parser() = default;
-
-ASTNode *Parser::parse() { return expr(); }
+/**
+ * Parse Abstract Syntax Tree node object from expression
+ */
+ASTNode *Parser::parse() {
+    return expr();
+}
 /**
  * Get next token from lexer
  */
