@@ -38,6 +38,11 @@ std::string ASTNode::repr() const {
 void ASTNode::print(std::ostream &out) const {
     inner_print(out, 0);
 }
+/**
+ * Private implementation of ASTNode::print
+ * @param out Output stream
+ * @param indent Indentation size (times 4 spaces)
+ */
 void ASTNode::inner_print(std::ostream &out, size_t indent) const {
     if (lhs_) {
         lhs_->inner_print(out, indent + 1);
