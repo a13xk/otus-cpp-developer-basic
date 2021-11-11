@@ -16,4 +16,3 @@ private:
     double m_mean;
     std::vector<double> m_input_values;
 };
-

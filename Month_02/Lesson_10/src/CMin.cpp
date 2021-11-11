@@ -29,5 +29,3 @@ double CMin::eval() const {
 const char *CMin::name() const {
     return "min";
 }
-
-
