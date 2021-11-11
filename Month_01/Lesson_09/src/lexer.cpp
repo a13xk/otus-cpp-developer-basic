@@ -1,5 +1,7 @@
-#include "lexer.hpp"
 #include <cctype>
+
+#include "lexer.hpp"
+
 /**
  * Default constructor
  * @param in Input stream
