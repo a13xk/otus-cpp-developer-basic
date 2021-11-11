@@ -64,22 +64,23 @@ ASTNode *Parser::term() {
         }
     }
 }
-
+/**
+ * Parse base element (number or variable name)
+ */
 ASTNode *Parser::prim() {
-    // parse numbers and names
     ASTNode *node = nullptr;
     next_token();
     switch (tok_) {
-    case Token::Number:
-        node = new Number(lexer_.get_number());
-        break;
-    case Token::Name:
-        // Implement Variable class and uncomment this line
-        // node = new Variable(lexer_.get_name());
-        return nullptr;
-        break;
-    default:
-        break;
+        case Token::Number:
+            node = new Number(lexer_.get_number());
+            break;
+        case Token::Name:
+            // Implement Variable class and uncomment this line
+            // node = new Variable(lexer_.get_name());
+            return nullptr;
+            break;
+        default:
+            break;
     }
     next_token();
     return node;
