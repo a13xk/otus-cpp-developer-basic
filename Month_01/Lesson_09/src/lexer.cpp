@@ -17,6 +17,14 @@ bool Lexer::is_end() const {
 bool Lexer::is_operator(char ch) const {
     return ch == '+' || ch == '-' || ch == '*' || ch == '/';
 }
+/**
+ * Indicate that character is either left or right parenthesis
+ * @param ch Character read from input stream
+ */
+bool Lexer::is_parenthesis(char ch) const {
+    return ch == '(' || ch == ')';
+}
+
 Lexer::Token Lexer::next_token() {
     for (;;) {
         switch (state_) {
