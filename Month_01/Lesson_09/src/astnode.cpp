@@ -1,9 +1,12 @@
 #include "astnode.hpp"
-
-ASTNode::ASTNode(const std::string &repr)
-    : repr_(repr)
-    , lhs_{nullptr}
-    , rhs_{nullptr} {}
+/**
+ * Leaf constructor (node without child nodes)
+ * @param repr String representation of created node
+ */
+ASTNode::ASTNode(const std::string &repr):
+    repr_(repr),
+    lhs_{nullptr},
+    rhs_{nullptr} {}
 
 ASTNode::ASTNode(const std::string &repr, ASTNode *lhs, ASTNode *rhs)
     : repr_(repr)
