@@ -31,9 +31,13 @@ ASTNode::~ASTNode() {
 std::string ASTNode::repr() const {
     return repr_;
 }
-
-void ASTNode::print(std::ostream &out) const { inner_print(out, 0); }
-
+/**
+ * Print Abstract Syntax Tree to output stream
+ * @param out Output stream
+ */
+void ASTNode::print(std::ostream &out) const {
+    inner_print(out, 0);
+}
 void ASTNode::inner_print(std::ostream &out, size_t indent) const {
     if (lhs_) {
         lhs_->inner_print(out, indent + 1);
