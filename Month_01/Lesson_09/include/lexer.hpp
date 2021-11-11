@@ -27,8 +27,7 @@ class Lexer {
 
     int get_number() const;
     std::string get_operator() const;
-
-    std::string get_name() const { return name_; }
+    std::string get_name() const;
 
   protected:
     bool is_parenthesis(char ch) const;

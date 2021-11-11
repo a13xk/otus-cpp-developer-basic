@@ -30,6 +30,12 @@ std::string Lexer::get_operator() const {
     return operator_;
 }
 /**
+ * Get Latin character sequence parsed from input stream
+ */
+std::string Lexer::get_name() const {
+    return name_;
+}
+/**
  * Indicate reaching the end of input stream
  */
 bool Lexer::is_end() const {
