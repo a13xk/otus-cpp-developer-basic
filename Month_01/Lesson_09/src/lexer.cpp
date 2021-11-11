@@ -10,6 +10,13 @@
 bool Lexer::is_end() const {
     return in_.eof() || ch_ == '\n';
 }
+/**
+ * Indicate that character is one of four arithmetic operators
+ * @param ch Character read from input stream
+ */
+bool Lexer::is_operator(char ch) const {
+    return ch == '+' || ch == '-' || ch == '*' || ch == '/';
+}
 Lexer::Token Lexer::next_token() {
     for (;;) {
         switch (state_) {

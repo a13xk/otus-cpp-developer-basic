@@ -67,7 +67,3 @@ inline char Lexer::next_char() {
 }
 
 inline bool Lexer::is_parenthesis(char ch) const { return ch == '(' || ch == ')'; }
-
-inline bool Lexer::is_operator(char ch) const {
-    return ch == '+' || ch == '-' || ch == '*' || ch == '/';
-}
