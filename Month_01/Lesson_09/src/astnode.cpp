@@ -7,11 +7,16 @@ ASTNode::ASTNode(const std::string &repr):
     repr_(repr),
     lhs_{nullptr},
     rhs_{nullptr} {}
-
-ASTNode::ASTNode(const std::string &repr, ASTNode *lhs, ASTNode *rhs)
-    : repr_(repr)
-    , lhs_{lhs}
-    , rhs_{rhs} {}
+/**
+ * Node constructor (node with one or two child nodes)
+ * @param repr String representation of created node
+ * @param lhs Left hand side node
+ * @param rhs Right hand side node
+ */
+ASTNode::ASTNode(const std::string &repr, ASTNode *lhs, ASTNode *rhs):
+    repr_(repr),
+    lhs_{lhs},
+    rhs_{rhs} {}
 
 ASTNode::~ASTNode() {
     delete lhs_;
