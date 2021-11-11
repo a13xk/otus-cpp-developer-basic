@@ -26,8 +26,7 @@ class Lexer {
     Token next_token();
 
     int get_number() const;
-
-    std::string get_operator() const { return operator_; }
+    std::string get_operator() const;
 
     std::string get_name() const { return name_; }
 

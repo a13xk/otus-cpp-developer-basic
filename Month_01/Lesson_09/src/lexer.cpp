@@ -24,6 +24,12 @@ int Lexer::get_number() const {
     return number_;
 }
 /**
+ * Get operator parsed from input stream
+ */
+std::string Lexer::get_operator() const {
+    return operator_;
+}
+/**
  * Indicate reaching the end of input stream
  */
 bool Lexer::is_end() const {
