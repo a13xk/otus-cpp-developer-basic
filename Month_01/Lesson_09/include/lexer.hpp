@@ -34,7 +34,7 @@ class Lexer {
   protected:
     bool is_parenthesis(char ch) const;
 
-    bool isoperator(char ch) const;
+    bool is_operator(char ch) const;
 
   private:
     enum class State {
@@ -70,6 +70,6 @@ inline bool Lexer::end() const { return in_.eof() || ch_ == '\n'; }
 
 inline bool Lexer::is_parenthesis(char ch) const { return ch == '(' || ch == ')'; }
 
-inline bool Lexer::isoperator(char ch) const {
+inline bool Lexer::is_operator(char ch) const {
     return ch == '+' || ch == '-' || ch == '*' || ch == '/';
 }

@@ -44,7 +44,7 @@ Lexer::Token Lexer::next_token() {
                 next_char();
                 break;
             }
-            if (isoperator(ch_)) {
+            if (is_operator(ch_)) {
                 operator_ = ch_;
                 next_char();
                 return Token::Operator;
