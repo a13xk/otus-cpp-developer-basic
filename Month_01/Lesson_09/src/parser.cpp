@@ -35,32 +35,33 @@ ASTNode *Parser::expr() {
         }
     }
 }
-
+/**
+ * Parse multiplication and division
+ */
 ASTNode *Parser::term() {
-    // parse multiplication and division
     ASTNode *root = prim();
     for (;;) {
         switch (tok_) {
-        case Token::Operator: {
-            std::string op = lexer_.get_operator();
-            switch (op.front()) {
-            case '*':
-                // Implement Mul class and uncomment this line
-                // root = new Mul(root, prim());
-                return nullptr;
+            case Token::Operator: {
+                std::string op = lexer_.get_operator();
+                switch (op.front()) {
+                    case '*':
+                        // Implement Mul class and uncomment this line
+                        // root = new Mul(root, prim());
+                        return nullptr;
+                        break;
+                    case '/':
+                        // Implement Div class and uncomment this line
+                        //root = new Div(root, prim());
+                        return nullptr;
+                        break;
+                    default:
+                        return root;
+                }
                 break;
-            case '/':
-                // Implement Div class and uncomment this line
-                //root = new Div(root, prim());
-                return nullptr;
-                break;
+            }
             default:
                 return root;
-            }
-            break;
-        }
-        default:
-            return root;
         }
     }
 }
