@@ -18,6 +18,12 @@ char Lexer::next_char() {
     return ch_;
 }
 /**
+ * Get number parsed from input stream
+ */
+int Lexer::get_number() const {
+    return number_;
+}
+/**
  * Indicate reaching the end of input stream
  */
 bool Lexer::is_end() const {
