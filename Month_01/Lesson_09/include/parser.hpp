@@ -15,14 +15,12 @@ class Parser {
     ASTNode *parse();
 
   private:
+    Lexer &lexer_;
+    Lexer::Token tok_;
+
     void next_token();
 
     ASTNode *expr();
-
     ASTNode *term();
-
     ASTNode *prim();
-
-    Lexer &lexer_;
-    Lexer::Token tok_;
 };
