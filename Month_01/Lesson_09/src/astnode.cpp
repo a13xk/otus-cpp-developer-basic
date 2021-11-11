@@ -14,6 +14,13 @@ ASTNode::~ASTNode() {
     delete lhs_;
     delete rhs_;
 }
+/**
+ * Return node name as string
+ * @return
+ */
+std::string ASTNode::repr() const {
+    return repr_;
+}
 
 void ASTNode::print(std::ostream &out) const { inner_print(out, 0); }
 
