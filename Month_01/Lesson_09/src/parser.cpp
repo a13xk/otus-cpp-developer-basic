@@ -6,32 +6,33 @@ using Token = Lexer::Token;
 ASTNode *Parser::parse() { return expr(); }
 
 void Parser::next_token() { tok_ = lexer_.next_token(); }
-
+/**
+ * Parse addition and subtraction
+ */
 ASTNode *Parser::expr() {
-    // parse addition and subsctruction
     ASTNode *root = term();
     for (;;) {
         switch (tok_) {
-        case Token::Operator: {
-            std::string op = lexer_.get_operator();
-            switch (op.front()) {
-            case '+':
-                // Implement Add class and uncomment this line
-                // root = new Add(root, term());
-                return nullptr;
+            case Token::Operator: {
+                std::string op = lexer_.get_operator();
+                switch (op.front()) {
+                    case '+':
+                        // Implement Add class and uncomment this line
+                        // root = new Add(root, term());
+                        return nullptr;
+                        break;
+                    case '-':
+                        // Implement Sub class and uncomment this line
+                        //root = new Sub(root, term());
+                        return nullptr;
+                        break;
+                    default:
+                        return root;
+                }
                 break;
-            case '-':
-                // Implement Sub class and uncomment this line
-                //root = new Sub(root, term());
-                return nullptr;
-                break;
+            }
             default:
                 return root;
-            }
-            break;
-        }
-        default:
-            return root;
         }
     }
 }
