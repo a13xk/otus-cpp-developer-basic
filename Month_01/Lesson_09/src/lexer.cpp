@@ -4,7 +4,12 @@
 #include "lexer.hpp"
 
 #include <cctype>
-
+/**
+ * Indicate reaching the end of input stream
+ */
+bool Lexer::is_end() const {
+    return in_.eof() || ch_ == '\n';
+}
 Lexer::Token Lexer::next_token() {
     for (;;) {
         switch (state_) {
