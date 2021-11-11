@@ -51,11 +51,11 @@ Lexer::Token Lexer::next_token() {
             }
             if (ch_ == '(') {
                 next_char();
-                return Token::Lbrace;
+                return Token::LParenthesis;
             }
             if (ch_ == ')') {
                 next_char();
-                return Token::Rbrace;
+                return Token::RParenthesis;
             }
             if (std::isdigit(ch_)) {
                 number_ = ch_ - '0';

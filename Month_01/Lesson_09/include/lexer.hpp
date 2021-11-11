@@ -12,8 +12,8 @@ class Lexer {
         Number,
         Operator,
         End,
-        Lbrace,
-        Rbrace,
+        LParenthesis,
+        RParenthesis,
         Name,
     };
 
@@ -32,7 +32,7 @@ class Lexer {
     std::string get_name() const { return name_; }
 
   protected:
-    bool isbrace(char ch) const;
+    bool is_parenthesis(char ch) const;
 
     bool isoperator(char ch) const;
 
@@ -68,7 +68,7 @@ inline char Lexer::next_char() {
 
 inline bool Lexer::end() const { return in_.eof() || ch_ == '\n'; }
 
-inline bool Lexer::isbrace(char ch) const { return ch == '(' || ch == ')'; }
+inline bool Lexer::is_parenthesis(char ch) const { return ch == '(' || ch == ')'; }
 
 inline bool Lexer::isoperator(char ch) const {
     return ch == '+' || ch == '-' || ch == '*' || ch == '/';
