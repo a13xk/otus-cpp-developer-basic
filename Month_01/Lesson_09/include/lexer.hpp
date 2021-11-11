@@ -54,13 +54,6 @@ class Lexer {
     std::istream &in_;
 };
 
-inline Lexer::Lexer(std::istream &in)
-    : state_(State::Empty)
-    , number_(0)
-    , in_(in) {
-    next_char();
-}
-
 inline char Lexer::next_char() {
     in_.get(ch_);
     return ch_;

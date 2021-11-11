@@ -1,9 +1,15 @@
-// OTUS C++ Basic course homework skeleton.
-// Lexer implementation
-
 #include "lexer.hpp"
-
 #include <cctype>
+/**
+ * Default constructor
+ * @param in Input stream
+ */
+Lexer::Lexer(std::istream &in) :
+    state_{State::Empty},
+    number_{0},
+    in_{in} {
+    next_char();
+}
 /**
  * Indicate reaching the end of input stream
  */
