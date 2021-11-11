@@ -7,14 +7,10 @@
 
 class Parser {
   public:
-    explicit Parser(Lexer &lexer)
-        : lexer_(lexer) {}
-
-    Parser(const Parser &other) = delete;
-
-    Parser &operator=(const Parser &other) = delete;
-
-    ~Parser() = default;
+    explicit Parser(Lexer &lexer);                      // Initialize object of type Parser explicitly
+    Parser(const Parser &other) = delete;               // Prevent initialization with other object of type Parser
+    Parser &operator=(const Parser &other) = delete;    // Prevent '=' operator usage
+    ~Parser();
 
     ASTNode *parse();
 

@@ -2,6 +2,15 @@
 #include "number.hpp"
 
 using Token = Lexer::Token;
+/**
+ * Default constructor
+ * @param lexer Lexer object
+ */
+Parser::Parser(Lexer &lexer) : lexer_(lexer) {}
+/**
+ * Trivial destructor
+ */
+Parser::~Parser() = default;
 
 ASTNode *Parser::parse() { return expr(); }
 
