@@ -17,7 +17,9 @@ ASTNode::ASTNode(const std::string &repr, ASTNode *lhs, ASTNode *rhs):
     repr_(repr),
     lhs_{lhs},
     rhs_{rhs} {}
-
+/**
+ * Destructor
+ */
 ASTNode::~ASTNode() {
     delete lhs_;
     delete rhs_;
