@@ -11,7 +11,7 @@ Lexer::Token Lexer::next_token() {
         case State::End:
             return Token::End;
         case State::ReadNumber:
-            if (end()) {
+            if (is_end()) {
                 state_ = State::End;
                 return Token::Number;
             }
@@ -24,7 +24,7 @@ Lexer::Token Lexer::next_token() {
             state_ = State::Empty;
             return Token::Number;
         case State::ReadName:
-            if (end()) {
+            if (is_end()) {
                 state_ = State::End;
                 return Token::Name;
             }
@@ -36,7 +36,7 @@ Lexer::Token Lexer::next_token() {
             state_ = State::Empty;
             return Token::Name;
         case State::Empty:
-            if (end()) {
+            if (is_end()) {
                 state_ = State::End;
                 return Token::End;
             }

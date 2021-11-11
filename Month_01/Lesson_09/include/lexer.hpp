@@ -44,7 +44,7 @@ class Lexer {
         End,
     };
     char next_char();
-    bool end() const;
+    bool is_end() const;
 
     State state_;
     std::string name_;
@@ -66,7 +66,7 @@ inline char Lexer::next_char() {
     return ch_;
 }
 
-inline bool Lexer::end() const { return in_.eof() || ch_ == '\n'; }
+inline bool Lexer::is_end() const { return in_.eof() || ch_ == '\n'; }
 
 inline bool Lexer::is_parenthesis(char ch) const { return ch == '(' || ch == ')'; }
 
