@@ -53,8 +53,3 @@ class Lexer {
     char ch_;
     std::istream &in_;
 };
-
-inline char Lexer::next_char() {
-    in_.get(ch_);
-    return ch_;
-}

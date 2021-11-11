@@ -11,6 +11,13 @@ Lexer::Lexer(std::istream &in) :
     next_char();
 }
 /**
+ * Get next character from input stream
+ */
+char Lexer::next_char() {
+    in_.get(ch_);
+    return ch_;
+}
+/**
  * Indicate reaching the end of input stream
  */
 bool Lexer::is_end() const {
