@@ -7,6 +7,7 @@ add_executable(calc
         src/parser.cpp
         src/astnode.cpp
         src/number.cpp
+        src/variable.cpp
         src/main.cpp
 )
 
