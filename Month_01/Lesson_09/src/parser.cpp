@@ -1,6 +1,7 @@
 #include "parser.hpp"
 #include "number.hpp"
 #include "variable.h"
+#include "add.h"
 #include "mul.h"
 #include "div.h"
 
@@ -37,9 +38,7 @@ ASTNode *Parser::expr() {
                 std::string op = lexer_.get_operator();
                 switch (op.front()) {
                     case '+':
-                        // Implement Add class and uncomment this line
-                        // root = new Add(root, term());
-                        return nullptr;
+                        root = new Add(root, term());
                         break;
                     case '-':
                         // Implement Sub class and uncomment this line
