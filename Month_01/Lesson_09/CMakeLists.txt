@@ -9,6 +9,7 @@ add_executable(calc
         src/number.cpp
         src/variable.cpp
         src/mul.cpp
+        src/div.cpp
         src/main.cpp
 )
 

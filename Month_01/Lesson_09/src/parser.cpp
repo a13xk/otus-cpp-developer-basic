@@ -2,6 +2,7 @@
 #include "number.hpp"
 #include "variable.h"
 #include "mul.h"
+#include "div.h"
 
 using Token = Lexer::Token;
 /**
@@ -66,13 +67,10 @@ ASTNode *Parser::term() {
                 std::string op = lexer_.get_operator();
                 switch (op.front()) {
                     case '*':
-                        // Implement Mul class and uncomment this line
                         root = new Mul(root, prim());
                         break;
                     case '/':
-                        // Implement Div class and uncomment this line
-                        //root = new Div(root, prim());
-                        return nullptr;
+                        root = new Div(root, prim());
                         break;
                     default:
                         return root;
