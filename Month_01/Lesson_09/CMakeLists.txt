@@ -8,6 +8,7 @@ add_executable(calc
         src/astnode.cpp
         src/number.cpp
         src/variable.cpp
+        src/mul.cpp
         src/main.cpp
 )
 
