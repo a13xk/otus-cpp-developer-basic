@@ -2,6 +2,7 @@
 #include "number.hpp"
 #include "variable.h"
 #include "add.h"
+#include "sub.h"
 #include "mul.h"
 #include "div.h"
 
@@ -41,9 +42,7 @@ ASTNode *Parser::expr() {
                         root = new Add(root, term());
                         break;
                     case '-':
-                        // Implement Sub class and uncomment this line
-                        //root = new Sub(root, term());
-                        return nullptr;
+                        root = new Sub(root, term());
                         break;
                     default:
                         return root;
