@@ -3,10 +3,11 @@ cmake_minimum_required(VERSION 3.10)
 project(calc CXX)
 
 add_executable(calc
-    src/lexer.cpp
-    src/parser.cpp
-    src/astnode.cpp
-    src/main.cpp
+        src/lexer.cpp
+        src/parser.cpp
+        src/astnode.cpp
+        src/number.cpp
+        src/main.cpp
 )
 
 target_include_directories(calc PRIVATE include)
