@@ -3,6 +3,8 @@
 #include "IStatistics.h"
 
 #include <vector>
+#include <algorithm>
+#include <cmath>
 
 class CPct90 : public IStatistics {
 
