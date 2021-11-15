@@ -1,5 +1,4 @@
 #include "CPct95.h"
-#include <bits/stdc++.h>
 /**
  * Constructor initializes m_pct95 with zero to start accumulation of values
  * The CPct90 class encapsulates calculation of Percentile 95 value from given sequence
@@ -23,7 +22,7 @@ void CPct95::update(double next) {
 
     // Get integer and fractional parts of rank
     double fractional_part, integer_part;
-    fractional_part = modf(rank, &integer_part);
+    fractional_part = std::modf(rank, &integer_part);
 
     // Calculate Percentile 95: p95 = sorted_values[ip-1] + fp*(sorted_values[ip]-sorted_values[ip-1])
     auto ip = static_cast<unsigned long>(integer_part);
