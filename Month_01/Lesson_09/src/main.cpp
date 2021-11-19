@@ -26,5 +26,9 @@ int main() {
          ast->print(std::cout);
     }
 
+    // Free dynamically allocated memory
+    delete ast;
+    ast = nullptr;
+
     return 0;
 }
