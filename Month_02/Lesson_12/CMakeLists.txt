@@ -4,4 +4,4 @@ project(Containers)
 
 add_executable(containers
         src/main.cpp
-        src/IContainer.h)
+        src/Sequence.cpp)
