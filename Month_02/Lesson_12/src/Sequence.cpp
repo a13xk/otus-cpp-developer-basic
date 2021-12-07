@@ -8,6 +8,7 @@ public:
     ~Sequence() override;
     void push_back(T value) override;
     int size() override;
+    T& operator[](int idx) { return m_region[idx]; };
 private:
     int m_size;
     T* m_region;
