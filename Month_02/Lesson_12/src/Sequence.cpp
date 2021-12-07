@@ -1,3 +1,4 @@
+#include <iostream>
 #include "IContainer.h"
 
 // Template class declaration
@@ -7,6 +8,7 @@ public:
     Sequence();
     ~Sequence() override;
     void push_back(T value) override;
+    void insert(T value, int idx) override;
     void erase(int idx) override;
     int size() override;
     T& operator[](int idx) { return m_region[idx]; };
@@ -45,6 +47,72 @@ void Sequence<T>::push_back(T value) {
     delete [] m_region;                 // delete old allocated memory
     m_region = new_region;              // save new allocated memory in class member
     m_size += 1;                        // update container size
+};
+/**
+ * Insert element to container by given index
+ * @tparam T Type of container elements
+ * @param value New value to be inserted
+ * @param idx Index of new element to be inserted
+ */
+template<typename T>
+void Sequence<T>::insert(T value, int idx) {
+    if (m_size < 0) {
+        std::cout << "Container has invalid size";
+        return;
+    }
+    T* new_region = new T[m_size + 1];
+    // Insert element in the beginning of sequence
+    if (idx == 0) {
+        new_region[0] = value;
+        for (int i = 0; i < m_size; ++i) {
+            new_region[i+1] = m_region[i];
+        }
+    }
+    // Insert element in the end of sequence
+    if (idx == m_size-1) {
+        for (int i = 0; i < m_size; ++i) {
+            new_region[i] = m_region[i];
+        }
+        new_region[m_size] = value;
+    }
+    // Insert element somewhere in the middle of sequence
+    if (0 < idx && idx < m_size-1) {
+        for (int i = 0; i < idx; ++i) {
+            new_region[i] = m_region[i];
+        }
+        new_region[idx] = value;
+        for (int i = idx; i < m_size; ++i) {
+            new_region[i+1] = m_region[i];
+        }
+    }
+    // Insert element after the end of sequence
+    if (idx == m_size) {
+        new_region = new T[idx+1];
+        for (int i = 0; i < m_size; ++i) {
+            new_region[i] = m_region[i];
+        }
+        new_region[idx] = value;
+    }
+    // Insert element at index out of range of sequence
+    if (idx > m_size) {
+        new_region = nullptr;
+        T* another_region = new T[idx + 1];
+        for (int i = 0; i < m_size; ++i) {
+            another_region[i] = m_region[i];
+        }
+        // Fill new indexes with zeros
+        for (int i = m_size; i < idx; ++i) {
+            another_region[i] = 0;
+        }
+        another_region[idx] = value;
+        delete [] m_region;
+        m_region = another_region;
+        m_size = idx+1;
+        return;
+    }
+    delete [] m_region;
+    m_region = new_region;
+    m_size += 1;
 };
 /**
  * Remove element from container by given index
