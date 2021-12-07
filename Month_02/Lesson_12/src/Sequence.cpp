@@ -7,7 +7,7 @@ public:
     Sequence();
     ~Sequence() override;
     void push_back(T value) override;
-
+    int size() override;
 private:
     int m_size;
     T* m_region;
@@ -43,11 +43,13 @@ void Sequence<T>::push_back(T value) {
     delete [] m_region;                 // delete old allocated memory
     m_region = new_region;              // save new allocated memory in class member
     m_size += 1;                        // update container size
-}
+};
 
-
-
-
-
-
-
+/**
+ * Get size of sequence container
+ * @tparam T Type of container elements
+ */
+template<typename T>
+int Sequence<T>::size() {
+    return m_size;
+};
