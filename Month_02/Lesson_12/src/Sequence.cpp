@@ -10,7 +10,7 @@ public:
     void push_back(T value) override;
     void insert(T value, int idx) override;
     void erase(int idx) override;
-    int size() override;
+    int size() const override;
     T& operator[](int idx) { return m_region[idx]; };
 private:
     int m_size;
@@ -169,6 +169,6 @@ void Sequence<T>::erase(int idx) {
  * @tparam T Type of container elements
  */
 template<typename T>
-int Sequence<T>::size() {
+int Sequence<T>::size() const {
     return m_size;
 };
