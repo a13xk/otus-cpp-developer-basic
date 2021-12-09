@@ -11,13 +11,22 @@ public:
     void insert(T value, int idx) override;
     void erase(int idx) override;
     int size() const override;
-    T& operator[](int idx) { return m_region[idx]; };
+    T operator[](int idx) const override;
 private:
     int m_size;
     T* m_region;
 };
 
 // Template class definition
+/**
+ * Return value by given index
+ * @tparam T Type of container elements
+ * @param idx Index of element
+ */
+template <typename T>
+T Sequence<T>::operator[](int idx) const {
+    return m_region[idx];
+};
 /**
  * Default constructor
  * @tparam T Type of container elements
