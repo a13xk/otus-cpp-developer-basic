@@ -17,6 +17,21 @@ private:
     T* m_region;
 };
 
+/**
+ * Send all elements of Sequence<T> container to output stream separating them with space
+ * @tparam T Type of container elements
+ * @param os Output stream
+ * @param sequence Sequence container
+ */
+template <typename T>
+std::ostream& operator<<(std::ostream& os, const Sequence<T>& sequence)
+{
+    for (int i = 0; i < sequence.size(); ++i) {
+        os << sequence[i] << " ";
+    }
+    return os;
+}
+
 // Template class definition
 /**
  * Return value by given index
