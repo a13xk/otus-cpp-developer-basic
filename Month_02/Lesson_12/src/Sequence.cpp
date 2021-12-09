@@ -1,6 +1,11 @@
 #include <iostream>
 #include "IContainer.h"
 
+/**
+ * Implementation of IContainer template class
+ * Elements are stored sequentially just like in C arrays
+ */
+
 // Template class declaration
 template <typename T>
 class Sequence : public IContainer<T>{
