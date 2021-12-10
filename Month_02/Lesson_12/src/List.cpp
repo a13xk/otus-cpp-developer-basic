@@ -1,6 +1,11 @@
 #include <iostream>
 #include "IContainer.h"
-
+template <typename T>
+struct Node {
+    Node* next;         // pointer to the next List element (node)
+    Node* prev;         // pointer to the previous List element (node)
+    T element_value;    // list element value
+};
 /**
  * Implementation of IContainer template class
  * Elements are connected with each other using pointers
@@ -10,11 +15,7 @@
 template <typename T>
 class List : public IContainer<T> {
 public:
-    struct Node {
-        Node* next;         // pointer to the next List element (node)
-        Node* prev;         // pointer to the previous List element (node)
-        T element_value;    // list element value
-    };
+
     List();
     ~List() override;
     void push_back(T value) override;
@@ -22,7 +23,7 @@ public:
     T& operator[](int idx) override;
     const T& operator[](int idx) const override;
 private:
-    Node* m_last;
+    Node<T>* m_last;
     int m_size;
 };
 
@@ -49,7 +50,7 @@ std::ostream& operator<<(std::ostream& os, const List<T>& list)
  */
 template<typename T>
 T &List<T>::operator[](int idx) {
-    Node* last = m_last;
+    Node<T>* last = m_last;
     int last_index = m_size-1;
     while (last_index > 0) {
         if (idx == last_index) {
@@ -63,7 +64,7 @@ T &List<T>::operator[](int idx) {
 
 template<typename T>
 const T &List<T>::operator[](int idx) const {
-    Node* last = m_last;
+    Node<T>* last = m_last;
     int last_index = m_size-1;
     while (last_index > 0) {
         if (idx == last_index) {
@@ -93,7 +94,7 @@ List<T>::~List() = default;
  */
 template<typename T>
 void List<T>::push_back(T value) {
-    Node* new_node = new Node{};        // create new node
+    Node<T>* new_node = new Node<T>{};        // create new node
     new_node->prev = m_last;            // the last element in container becomes previous
     new_node->next = nullptr;           // there is no next element yet
     new_node->element_value = value;    // store element value
