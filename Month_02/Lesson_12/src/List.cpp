@@ -26,6 +26,21 @@ private:
     int m_size;
 };
 
+/**
+ * Send all elements of List<T> container to output stream separating them with space
+ * @tparam T Type of container elements
+ * @param os Output stream
+ * @param list List container
+ */
+template <typename T>
+std::ostream& operator<<(std::ostream& os, const List<T>& list)
+{
+    for (int i = 0; i < list.size(); ++i) {
+        os << list[i] << " ";
+    }
+    return os;
+}
+
 // Template class definition
 /**
  * Return value by given index
