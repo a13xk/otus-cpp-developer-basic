@@ -19,6 +19,7 @@ public:
     List();
     ~List() override;
     void push_back(T value) override;
+    void insert(T value, int idx) override;
     void erase(int idx) override;
     int size() const override;
     T& operator[](int idx) override;
@@ -105,6 +106,58 @@ void List<T>::push_back(T value) {
     }
     m_last = new_node;              // update pointer to the last element
     m_size += 1;                    // update container size
+};
+/**
+ * Insert element to List container by given index
+ * @tparam T Type of container elements
+ * @param value New value to be inserted
+ * @param idx Index of new element to be inserted
+ */
+template<typename T>
+void List<T>::insert(T value, int idx) {
+    if (m_size < 0) {
+        std::cout << "Container has invalid size";
+        return;
+    }
+    // Insert element in the end of list
+    if (idx == m_size) {
+        push_back(value);
+        return;
+    }
+    // Insert element somewhere in the middle of list
+    if (0 < idx && idx < m_size) {
+        Node<T>* node = m_last;
+        Node<T>* prev = node->prev;
+        for (int i = m_size-1; i >=0 ; --i) {
+            if (idx == i) {
+                Node<T>* new_node = new Node<T>{};
+                new_node->next = node;
+                new_node->prev = prev;
+                new_node->element_value = value;
+                node->prev = new_node;
+                prev->next = new_node;
+                m_size += 1;
+                return;
+            }
+            node = prev;
+            prev = node->prev;
+        }
+    }
+
+    // Insert element in the beginning of list
+    if (idx == 0) {
+        Node<T>* node = m_last;
+        while (node->prev != nullptr) {
+            node = node->prev;
+        }
+        Node<T>* new_node = new Node<T>{};
+        new_node->prev = nullptr;
+        new_node->next = node;
+        new_node->element_value = value;
+        node->prev = new_node;
+        m_size += 1;
+        return;
+    }
 };
 /**
  * Remove element from List container by given index
