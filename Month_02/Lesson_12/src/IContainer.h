@@ -13,6 +13,5 @@ public:
     virtual const T& operator[](int idx) const = 0;
 
 private:
-    T*  m_region;
     int m_size;
 };
