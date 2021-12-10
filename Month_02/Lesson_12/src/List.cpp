@@ -18,6 +18,7 @@ public:
     ListContainer();
     ~ListContainer() override;
     void push_back(T value) override;
+    int size() const override;
 private:
     Node* m_last;
     int m_size;
@@ -49,4 +50,12 @@ void ListContainer<T>::push_back(T value) {
     new_node->element_value = value;    // store element value
     m_last = new_node;                  // update pointer to the last element
     m_size += 1;                        // update container size обновляем размер
+}
+/**
+ * Get size of list container
+ * @tparam T Type of container elements
+ */
+template<typename T>
+int ListContainer<T>::size() const {
+    return m_size;
 };
