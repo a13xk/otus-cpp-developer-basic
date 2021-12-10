@@ -8,15 +8,15 @@
 
 // Template class declaration
 template <typename T>
-class ListContainer : public IContainer<T> {
+class List : public IContainer<T> {
 public:
     struct Node {
-        Node* next;         // pointer to the next ListContainer element (node)
-        Node* prev;         // pointer to the previous ListContainer element (node)
+        Node* next;         // pointer to the next List element (node)
+        Node* prev;         // pointer to the previous List element (node)
         T element_value;    // list element value
     };
-    ListContainer();
-    ~ListContainer() override;
+    List();
+    ~List() override;
     void push_back(T value) override;
     int size() const override;
     T& operator[](int idx) override;
@@ -33,7 +33,7 @@ private:
  * @param idx Index of element
  */
 template<typename T>
-T &ListContainer<T>::operator[](int idx) {
+T &List<T>::operator[](int idx) {
     Node* last = m_last;
     int last_index = m_size-1;
     while (last_index > 0) {
@@ -47,7 +47,7 @@ T &ListContainer<T>::operator[](int idx) {
 }
 
 template<typename T>
-const T &ListContainer<T>::operator[](int idx) const {
+const T &List<T>::operator[](int idx) const {
     Node* last = m_last;
     int last_index = m_size-1;
     while (last_index > 0) {
@@ -64,20 +64,20 @@ const T &ListContainer<T>::operator[](int idx) const {
  * @tparam T Type of container elements
  */
 template <typename T>
-ListContainer<T>::ListContainer() : m_last(nullptr), m_size(0) {};
+List<T>::List() : m_last(nullptr), m_size(0) {};
 /**
  * Trivial destructor
  * @tparam T Type of container elements
  */
 template<typename T>
-ListContainer<T>::~ListContainer() = default;
+List<T>::~List() = default;
 /**
  * Add new element to container
  * @tparam T New element type
  * @param value New element value
  */
 template<typename T>
-void ListContainer<T>::push_back(T value) {
+void List<T>::push_back(T value) {
     Node* new_node = new Node{};        // create new node
     new_node->prev = m_last;            // the last element in container becomes previous
     new_node->next = nullptr;           // there is no next element yet
@@ -90,6 +90,6 @@ void ListContainer<T>::push_back(T value) {
  * @tparam T Type of container elements
  */
 template<typename T>
-int ListContainer<T>::size() const {
+int List<T>::size() const {
     return m_size;
 };
