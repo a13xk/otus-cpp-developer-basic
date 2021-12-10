@@ -19,6 +19,7 @@ public:
     List();
     ~List() override;
     void push_back(T value) override;
+    void erase(int idx) override;
     int size() const override;
     T& operator[](int idx) override;
     const T& operator[](int idx) const override;
@@ -104,6 +105,69 @@ void List<T>::push_back(T value) {
     }
     m_last = new_node;              // update pointer to the last element
     m_size += 1;                    // update container size
+};
+/**
+ * Remove element from List container by given index
+ * @tparam T Type of container elements
+ * @param idx Index of element to be deleted
+ */
+template<typename T>
+void List<T>::erase(int idx) {
+    if (m_size <= 0) {
+        std::cout << "Container has invalid size";
+        return;
+    }
+    if (m_size == 1) {
+        delete m_last;
+        m_last == nullptr;
+        m_size = 0;
+        return;
+    }
+    if (m_size >=2) {
+        // Erase last element
+        if (idx == m_size-1) {
+            Node<T>* node = m_last->prev;
+            delete m_last;
+            m_last = node;
+            m_size--;
+            return;
+        }
+        // Erase element somewhere in the middle of list
+        if (0 < idx && idx < m_size-1) {
+            Node<T>* node = m_last;
+            Node<T>* prev = node->prev;
+            Node<T>* next = node->next;
+            for (int i = m_size-1; i >=0 ; --i) {
+                if (idx == i) {
+                    prev->next = next;
+                    next->prev = prev;
+                    delete node;
+                    m_size--;
+                    return;
+                }
+                node = prev;
+                prev = node->prev;
+                next = node->next;
+            }
+        }
+        // Erase first element
+        if (idx == 0) {
+            Node<T>* node = m_last;
+            while (node->prev != nullptr) {
+                node = node->prev;
+            }
+            Node<T>* next = node->next;
+            next->prev = nullptr;
+            delete node;
+            m_size--;
+            return;
+        }
+        // Do not allow erasing by index out of range
+        if (idx >= m_size) {
+            std::cout << "Invalid index: " << idx << std::endl;
+            return;
+        }
+    }
 };
 /**
  * Get size of list container
