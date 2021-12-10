@@ -4,4 +4,5 @@ project(Containers)
 
 add_executable(containers
         src/main.cpp
+        src/List.cpp
         src/Sequence.cpp)
