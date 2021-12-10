@@ -94,13 +94,17 @@ List<T>::~List() = default;
  */
 template<typename T>
 void List<T>::push_back(T value) {
-    Node<T>* new_node = new Node<T>{};        // create new node
+    Node<T>* new_node = new Node<T>{};  // create new node
     new_node->prev = m_last;            // the last element in container becomes previous
     new_node->next = nullptr;           // there is no next element yet
     new_node->element_value = value;    // store element value
-    m_last = new_node;                  // update pointer to the last element
-    m_size += 1;                        // update container size обновляем размер
-}
+    if (m_size > 0) {
+        Node<T>* last = m_last;
+        last->next = new_node;
+    }
+    m_last = new_node;              // update pointer to the last element
+    m_size += 1;                    // update container size
+};
 /**
  * Get size of list container
  * @tparam T Type of container elements
