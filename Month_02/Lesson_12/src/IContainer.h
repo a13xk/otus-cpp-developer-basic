@@ -9,9 +9,5 @@ public:
     virtual void insert(T value, int idx) = 0;
     virtual void erase(int idx) = 0;
     virtual int size() const = 0;
-    virtual T& operator[](int idx) = 0;
     virtual const T& operator[](int idx) const = 0;
-
-private:
-    int m_size;
 };

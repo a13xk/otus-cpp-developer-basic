@@ -16,7 +16,6 @@ public:
     void insert(T value, int idx) override;
     void erase(int idx) override;
     int size() const override;
-    T& operator[](int idx) override;
     const T& operator[](int idx) const override;
 private:
     int m_size;
@@ -45,20 +44,15 @@ std::ostream& operator<<(std::ostream& os, const Sequence<T>& sequence)
  * @param idx Index of element
  */
 template <typename T>
-T& Sequence<T>::operator[](int idx) {
-    return m_region[idx];
-};
-
-template <typename T>
 const T& Sequence<T>::operator[](int idx) const {
     return m_region[idx];
-};
+}
 /**
  * Default constructor
  * @tparam T Type of container elements
  */
 template<typename T>
-Sequence<T>::Sequence() : m_size(0), m_region(nullptr) {};
+Sequence<T>::Sequence() : m_size(0), m_region(nullptr) {}
 
 /**
  * Trivial destructor
@@ -82,7 +76,7 @@ void Sequence<T>::push_back(T value) {
     delete [] m_region;                 // delete old allocated memory
     m_region = new_region;              // save new allocated memory in class member
     m_size += 1;                        // update container size
-};
+}
 /**
  * Insert element to container by given index
  * @tparam T Type of container elements
@@ -130,7 +124,6 @@ void Sequence<T>::insert(T value, int idx) {
     }
     // Insert element at index out of range of sequence
     if (idx > m_size) {
-        new_region = nullptr;
         T* another_region = new T[idx + 1];
         for (int i = 0; i < m_size; ++i) {
             another_region[i] = m_region[i];
@@ -148,7 +141,7 @@ void Sequence<T>::insert(T value, int idx) {
     delete [] m_region;
     m_region = new_region;
     m_size += 1;
-};
+}
 /**
  * Remove element from container by given index
  * @tparam T Type of container elements
@@ -197,7 +190,7 @@ void Sequence<T>::erase(int idx) {
         m_region = new_region;
         m_size -= 1;
     }
-};
+}
 
 /**
  * Get size of sequence container
@@ -206,4 +199,4 @@ void Sequence<T>::erase(int idx) {
 template<typename T>
 int Sequence<T>::size() const {
     return m_size;
-};
+}

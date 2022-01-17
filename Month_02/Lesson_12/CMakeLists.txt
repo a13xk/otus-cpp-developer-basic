@@ -3,6 +3,7 @@ cmake_minimum_required(VERSION 3.5)
 project(Containers)
 
 add_executable(containers
-        src/main.cpp
+        src/Main.cpp
+        src/List.h
         src/List.cpp
         src/Sequence.cpp)
