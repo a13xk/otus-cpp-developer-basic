@@ -1,5 +1,5 @@
 #include <iostream>
-#include "List.cpp"
+#include "List.h"
 #include "Sequence.cpp"
 
 int main() {
