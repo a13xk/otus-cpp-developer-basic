@@ -6,8 +6,6 @@ struct Node {
     Node* next;         // pointer to the next List element (node)
     Node* prev;         // pointer to the previous List element (node)
     T element_value;    // list element value
-//    Node() = default;
-//    ~Node() { delete next; }
 };
 
 /**
@@ -78,7 +76,9 @@ List<T>::List() : m_last(nullptr), m_size(0) {}
  */
 template<typename T>
 List<T>::~List() {
-    delete m_last;
+    for (int i = m_size; i == 0 ; --i) {
+        delete m_last;
+    }
 }
 /**
  * Add new element to container
