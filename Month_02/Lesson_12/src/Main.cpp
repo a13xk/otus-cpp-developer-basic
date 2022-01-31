@@ -1,6 +1,6 @@
 #include <iostream>
 #include "List.h"
-#include "Sequence.cpp"
+#include "Sequence.h"
 
 int main() {
     // Sequence container
